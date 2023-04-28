@@ -1,0 +1,857 @@
+---
+title: "The Public Health Disparities Geocoding Project 2.0"
+author: "<br>Christian Testa <br> Statistical Analyst <br> Harvard T.H. Chan School of Public Health"
+format: 
+  revealjs:
+    logo: images/phdgp_wide_logo.png
+    css: style.scss
+    slide-number: true
+template-partials:
+  - title-slide.html
+title-graphic: images/phdgp.png
+title-slide-attributes:
+  data-background-image: 'images/backgrounds/annie-spratt.jpg' 
+  data-background-color: 'white' 
+  data-background-opacity: '60%'
+---
+
+## Our Team 
+
+<center>
+<img src='images/01_background/Team.png' style='height: 500px;'><br>
+<em><span style='font-size: 14px;'>From left to right, top to bottom: Nancy
+Krieger, Jarvis Chen, Pamela Waterman, Christian Testa, Enjoli Hall, Dena
+Javadi, Justin Morgan, Tamara Rushovich, Sudipta Saha</span></em>
+</center>
+
+
+:::{.notes}
+I want to acknowledge what an excellent team of instructors we had.
+
+Nancy Krieger, Professor of Social Epidemiology and American Cancer Society
+Clinical Research Professor in the Department of Social and Behavioral Sciences,
+Harvard T.H. Chan School of Public Health, and also Director of the HSPH
+Interdisciplinary Concentration on Women, Gender, and Health, has been the
+principle investigator for the Population Health Disparities Geocoding Projects.
+
+Jarvis Chen (he/him) is a social epidemiologist and Lecturer in Social and
+Behavioral Sciences at the Harvard T.H. Chan School of Public Health and
+Associate Director of the PhD in Population Health Sciences Program in Harvard
+University’s Graduate School of Arts and Sciences.
+
+Pam Waterman has been project director for Dr. Krieger for over 20 years and
+along with Nancy and Jarvis contributed to the original Population Health
+Disparities Geocoding Project (PHDGP).
+
+And then we had the help of five terrific PhD students, Enjoli Hall, Dena
+Javadi, Justin Morgan, Tamara Rushovich, and Sudipta Saha. These students all
+contributed unique perspectives to our training ranging from their focuses on
+urban planning, the political and economic determinants of health, to their
+experiences with community engaged research, social epidemiology, and
+statistical modeling expertise.
+:::
+
+# Background {background-image="images/backgrounds/ivana-cajina.jpg" background-color='black' background-opacity='40%'}
+
+## Background 
+
+:::{.columns}
+:::{.column}
+<center>
+<div style='background: #ffbe76; padding: 10px; margin-top: 150px;'>
+Our training taught people why and how to analyze population health and health
+inequities in relation to census tract, county, and other geo-referenced societal
+and environmental data.
+</div>
+</center>
+:::
+
+:::{.column}
+<img src='images/01_background/BookCover.png' style='height: 500px; border: 1px black solid;'>
+:::
+:::
+
+::: {.notes}
+[Read the slide]
+
+These trainings were conducted over two four-day workshops offered in June and 
+July of 2022. 
+
+We invited 75 workshop attendants from diverse backgrounds including: academia
+including researchers, professors, and students, public health departments, the
+Centers for Disease Control and Prevention, non-profits, policy think-tanks,
+advocacy groups, and more. 
+
+Before we go on further, I want to emphasize that we offered these workshops
+completely free of cost to participants, as funded through the American Cancer
+Society Clinical Research Professor award to Nancy Krieger.
+:::
+
+## 
+
+> “A core function of public health is to monitor inequities and see if they are getting worse, staying stagnant, or getting better,” said Krieger. “If you don’t have the metrics to do that easily, you can’t see it.”
+
+<center><img src="images/01_background/HSPH_news.png" height='500px'></center>
+
+
+## The Original PHDGP
+
+<center>
+<img src="images/01_background/PHDGP1.png" height='600px'>
+</center>
+
+:::{.notes}
+The techniques involved in using geographic data in health analyses have come a
+long way, both in part due to the work by Nancy Krieger in the original Public
+Health Disparities Geocoding Project, and due to maturation of statistical
+techniques and geographic information systems (or GIS) software. 
+
+The original PHDGP was born out of Nancy's prior work analyzing Cancer Registry
+data in relation to residential addresses. She was an early pioneer in this
+field, literally geocoding addresses to census tracts by hand, but certainly not
+_the_ first. 
+
+The first incarnation of PHDGP aimed not just to inform public health practitioners
+as to how to go about their work assessing, documenting, and combatting health disparities, but 
+to also ask the question:  at what geographic level, and using what social variables, 
+are health disparities best understood?  That work culminated in recommendations to 
+focus health disparities research in the US at the Census Tract level and to use 
+the proportion of households under the federal poverty line as defined by cutpoints
+ranging from 0-5%, 5-10%, 10-20%, and 20% and above. 
+::: 
+
+## Origins of the Ideas
+
+<center>
+<img src="images/01_background/Origins.png" height='600px'>
+</center>
+
+:::{.notes}
+Projects tying the health of the people to their geographical conditions have
+their roots in the earliest examples of epidemiological studies. 
+
+This kind of work is only made possible through use of geographic data describing
+the population — including cadastral maps and Census data tables. 
+
+In 1840, Louis-René Villermé studied the living and working conditions of
+factory workers in various industries. He found that poor living and working
+conditions were directly correlated with higher mortality rates.  This was, of
+course, contrary to the prevalent theories of disease distribution at the time, 
+which included miasma theory (literally connoting "bad air"), moral failures and
+behavior of the poor, and divine punishment. 
+:::
+
+## Health Equity
+
+<center>
+<img src="images/01_background/injustice.png" height='600px'>
+</center>
+
+
+:::{.notes}
+Health equity, one of the central goals of Public Health, refers to a conditions
+in which everyone has a fair and just opportunity to be as healthy as possible. 
+
+Unfortunately we live in a world where today there are inequities in health that
+are unfair, unjust and preventable.
+
+These inequitable conditions have been created by a long history of
+discrimination and marginalization. Highlighted here are the detectable effects
+of Jim Crow laws and historical redlining which kept People of Color from
+housing in more White, affluent neighborhoods across the United States and
+served to concentrate poverty and People of Color in areas that were given lower
+grades as a result of their proximity to industrial sources of pollution, less
+than ideal living conditions, and other characteristics that were perceived as
+undesirable.
+:::
+
+## Health Justice 
+
+<center>
+<img src="images/01_background/health_justice_vs_equity.png" height='600px'>
+</center>
+
+:::{.notes}
+Similar, but distinct to the concept of health equity is the concept of health justice.
+
+Health justice is an approach to public health that seeks
+to eliminate health disparities and achieve equity by dismantling systems of
+discrimination, oppression, and marginalization that contribute to poor health
+outcomes. 
+
+Health justice emphasizes the importance of addressing the root causes of health
+inequities and redistributing power away from unjust systems to ensure that all
+individuals and communities have access to the resources, opportunities, and
+conditions necessary to achieve optimal health and well-being.
+
+This means challenging and and dismantling institutional and structural barriers
+that perpetuate health disparities, including racism, gender and sexuality based
+discrimination, ableism, weight stigma, ageism, and others.
+
+In particular, while "Health Equity" has become a bit of a trendy term popularly
+invoked to garner support for varied causes, the popularity of "Health Justice,"
+which directly asks from whom power must be wrested and how resources must be
+redistributed to create equitable conditions, has, in contrast, lagged.
+:::
+
+## Ecosocial Theory 
+
+<center>
+<img src="images/01_background/ecosocial_theory.png" height='600px'>
+</center>
+
+:::{.notes}
+With that, I want to introduce the Ecosocial Theory of Disease Distribution
+which is a framework for understanding health disparities that Nancy Krieger has
+been developing for the past several decades.
+
+Ecosocial theory specifically asks us to identify how individuals physically and
+biologically embody the harms, disadvantages and injustices done unto them by
+systems of oppression that exist as a result of contemporary political economy
+across the life-course and across levels of society.
+
+Moreover, this framework calls into focus that the accountability of systems of
+power and individuals' agency within them are foundational causal factors in the
+explanation of the inequitable distribution of disease.
+:::
+
+# Methods {background-image="images/backgrounds/conny-schneider.jpg" background-color='black' background-opacity='40%'}
+
+:::{.notes}
+For the next section, I'm going to discuss some of the most important data
+analysis techniques and methods that we taught in our trainings.
+:::
+
+## Geocoding
+
+<center>
+<img src="images/01_background/geocoding.png" height='600px'>
+</center>
+
+:::{.notes}
+It's in the name:  Geocoding — so what is it? 
+
+Geocoding refers to the process by which we link health records or really 
+any kind of records that exist in a dataset to geographic entities. 
+
+This is such an incredibly powerful technique because in health systems data
+entry is often a pain-point: Many doctors complain about how entering data into
+the Electronic Medical Record means that's often time they spend typing instead of 
+facing the patient and actually seeing them eye-to-eye. 
+
+One field that huge numbers of databases and data systems routinely collect is 
+individuals' residential addresses. With that information, we can use services like
+Google Maps, ArcGIS, and the Census Geocoder to convert those into latitude and longitude
+locations that can then be easily linked to geographic areas. 
+:::
+
+## Area Based Social Metrics 
+
+:::{.columns}
+:::{.column}
+Area-Based Social Metrics (ABSMs) are quantitative measures that capture and
+represent the social, economic, and demographic characteristics of a specific
+geographic area or community.
+
+On the right are some examples of ABSMs available from the CDC Social
+Vulnerability Index which is designed to help public health officials and local
+planners better prepare for and respond to emergency events like hurricanes,
+disease outbreaks, or exposure to dangerous chemicals. 
+:::
+
+:::{.column}
+<img src="images/02_methods/SVI_Themes.png"><br>
+<span style='font-size: 18px;'>
+Figure reproduced from <https://www.atsdr.cdc.gov/placeandhealth/svi/fact_sheet/fact_sheet.html>
+</span>
+:::
+:::
+
+:::{.notes}
+Area-Based Social Metrics (ABSMs) are quantitative measures that capture and
+represent the social, economic, and demographic characteristics of a specific
+geographic area or community.
+
+Some common ABSMs include: 
+
+  - Socioeconomic status, such as income, education, employment, poverty, and
+  racialized economic segregation (which I'll talk about a bit more momentarily).
+  - Demographic characteristics including age, gender, and racial/ethnic breakdowns
+  - Housing and living conditions; 
+  - Access to healthcare services including density of healthcare facilities and insurance
+  coverage
+  - Environmental factors like air and water quality, access to green spaces, and environmental
+  hazards
+  
+:::
+
+## The Index of Concentration at the Extremes
+
+:::{.columns}
+:::{.column}
+<span style='font-size: 22px;'>
+The Index of Concentration at the Extremes
+(ICE) measures the extent to which a population
+in a specified area is concentrated into best-off
+and worst-off extremes of a specified social
+distribution.<br><br></span>
+
+<span style='font-size: 22px;'>
+The ICE was introduced into the sociological
+literature by Massey in 2001 to measure
+economic polarization.<br><br>
+</span>
+
+<span style='font-size: 22px;'>
+Building on Massey’s work, in 2015 Krieger et al
+introduced two new novel ICE measures, one
+for racialized segregation, and one for racialized
+economic segregation.
+</span>
+:::
+:::{.column}
+<img src="images/02_methods/ICE_generic.png">
+
+<img src="images/02_methods/ICEraceinc.png">
+:::
+:::
+
+## {.center}
+
+<center>
+<span style='font-size: 48px'>
+<em>
+Consider what the ICE for racialized economic segregation might look like at
+different geographic levels – namely the county, congressional district, and
+state levels.</em>
+</span>
+</center>
+
+## 
+
+<center>
+<img src="images/02_methods/ICE_plt_county.png">
+</center>
+
+:::{.notes}
+[tab through and back to this]
+
+What I'd like you to take away from this is that the geographic level 
+at which data are analyzed can literally center or hide the experiences of 
+historically marginalized populations — especially People of Color. 
+
+In these figures, one can see that changing the boundaries used 
+from counties to congressional districts and states means that poor Black and
+Hispanic People, poor American Indian and Alaska Native people are 
+made invisible. 
+:::
+
+## 
+
+<center>
+<img src="images/02_methods/ICE_plt_congressional_district.png">
+</center>
+
+##
+
+<center>
+<img src="images/02_methods/ICE_plt_state.png">
+</center>
+
+## The Modifiable Areal Unit Problem and Ecological Fallacy
+
+:::{.columns}
+:::{.column}
+<center>
+<img src="images/02_methods/MAUP.png" height='400px'>
+</center>
+
+<span style='font-size: 14px;'> 
+Figure from <https://en.wikipedia.org/wiki/Modifiable_areal_unit_problem#/media/File:Maup_rate_numbers.png>
+</span>
+:::
+:::{.column}
+<center>
+<img src="images/02_methods/Simpsons_paradox.gif" height='400px'>
+</center>
+
+<span style='font-size: 14px;'> 
+Figure from <https://commons.wikimedia.org/wiki/File:Simpsons_paradox_-_animation.gif>
+</span>
+
+:::
+:::
+
+:::{.notes}
+In fact, in geography and spatial statistics, this problem is well understood 
+and comes in two flavors: 
+
+The modifiable areal unit problem states that if one chooses to change what 
+boundaries are used, they can change what story the data tell — and of course this 
+is well understood by those who work in the gerrymandering space as one example. 
+
+Another flavor of this dimension to spatial data analysis is the ecological
+fallacy. The ecological fallacy is the mistaken idea that correlations drawn at
+a geographically aggregate level can be applied to smaller geographical levels, 
+particularly the individual level.
+
+An easy to understand example of this is what while states that are more wealthy
+tend to vote more democratically, in many states individuals with higher income
+tend to vote more conservatively, demonstrating the principle that correlations
+drawn at the state level can't be assumed to hold at the individual level.
+
+The relevance to the figure on the right is that we can imagine collapsing each
+of these strata of observations into an average for each strata, which if we
+perform a regression analysis on, we would see the decreasing relationship between X and Y.  On
+the other hand, if we are able to analyze the data within strata at the
+individual data-point level, we see a different, increasing relationship. This
+is something that can happen when we aggregate observations up to an area-level
+and draw correlations, so it's important to be mindful of the potential for this
+to happen.
+:::
+
+## tidycensus
+
+:::{.columns}
+:::{.column}
+:::{style='font-size: 28px;'}
+```r
+library(tidycensus)
+library(tidyverse)
+
+ny <- get_acs(geography = "tract", 
+              variables = "B19013_001", 
+              state = "NY", 
+              county = "New York", 
+              year = 2020, 
+              geometry = TRUE)
+
+ggplot(ny, aes(fill = estimate)) + 
+  geom_sf() + 
+  theme_void() + 
+  scale_fill_viridis_c(labels = scales::dollar)
+```
+
+<img src="images/02_methods/tidycensus.png" height='150px' style='display: inline-block;'>
+:::
+:::
+:::{.column}
+<img src="images/02_methods/NYC.png" align='right'>
+:::
+:::
+
+:::{.notes}
+Now that we've talked a little bit about Area Based Social Metrics and some of
+the points where particular care is needed when using them, let's talk about an
+incredibly useful resource that enables users to programmatically retrieve
+data from the Census.
+
+The tidycensus package in R provides a very handy and concise syntax for
+retrieving data from the US Census Products including the decennial census,
+American Community Survey, and other products.
+:::
+
+## Reproducibility and Mapping in R
+
+<center>
+<img src="images/02_methods/giraudlambert.png">
+</center>
+
+<span style='font-size: 24px;'>
+Giraud and Lambert <a href="https://doi.org/10.1007/978-3-319-57336-6_13">(2017)</a>
+</span>
+
+:::{.notes}
+I find that there's three common reactions when I introduce tidycensus: 
+
+  - "wow, I can't wait to start using this!" 
+  
+  - "why should I bother with doing this in code when I can just download the data and 
+  shapefiles and do it in GIS?" 
+  
+  - "i'm still a bit overwhelmed and not sure where to start" 
+  
+I'd like to address each of these — 
+
+So for those who can't wait to get started integrating Census measures into their
+work, I'll be explaining some critical methodological considerations in a moment, 
+especially around taking into account age-effects and statistical noise. 
+
+For those who are asking what's better about using tidycensus than using a more
+traditional GIS (or geographical information systems) based approach — I think
+the answer lies in reproducibility. One of the unfortunate aspects of much of
+GIS software  is that its point-and-click interface makes reproducing results
+relatively challenging and often instructions for recreating a figure aren't
+written down, rather remaining tacit knowledge for only the GIS analysts working
+on a given project. 
+
+Instead, by harnessing the power of modern programming
+languages to interface with GIS, we can make our work more readily reproducible,
+meaning that concerned parties including the populations whose data are being
+analyzed, can more readily engage with the scientific results and methods being
+employed.
+
+Finally, I'll talk a bit later about our training manual that's available free
+and online that, among other things, teaches users in step-by-step detail how to
+get started with tidycensus to retrieve Census data pertaining to the ICE for
+racialized economic segregation, poverty rates, and age, racial/ethnic, and
+income distributions.
+:::
+
+## Age Standardization
+
+<img src="images/02_methods/Fenway.png" height='500px' style='position: absolute;'>
+
+:::{.fragment}
+<img src="images/02_methods/StdMillion.png" height='520px' style='position: absolute;'> 
+
+<div style='padding-top: 520px;'>
+Available from <https://seer.cancer.gov/stdpopulations/stdpop.19ages.html>
+</div>
+:::
+
+:::{.notes}
+People run into two incredibly common problems with maps of health outcomes: 
+The first being the failure to use a denominator so we often can't differentiate
+what are the effects of population distribution vs. other factors, and the second 
+is failure to adjust for important variations in age distribution. 
+
+In a setting like the greater Boston area, one can immediately see why this would be
+so important!  We have so many census tracts that are dominated by college and
+university dormitories where the median age is just slightly over 20.  If we 
+were looking at, for example, COVID-19 mortality rates by census tract, it should
+be no surprise that we'd see very low mortality rates in such census tracts given that
+higher age is one of the single biggest contributors to COVID-19 mortality risk. 
+
+So we have to do something about that before we let our audiences loose on maps
+where area level rates are visualized. The appropriate choice is to age
+standardize the rates shown in the map. This is done by re-weighting the
+age-strata-specific rates according to the age-breakdown of an agreed-upon
+standardized reference population.
+
+I'll show you how this works in the next few slides, but I want to point out specifically
+the first column from this table from SEER or the Surveillance, Epidemiology, and End Results 
+program from NIH. 
+:::
+
+## Aggregate Methods
+
+<img src="images/02_methods/poverty_aggregate_method.png" style='position: absolute;' height='500px'>
+
+:::{.fragment}
+<img src="images/02_methods/age_standardization_example.png" style='position: absolute;' height='600px'>
+:::
+
+:::{.notes}
+In the figure on the left is shown the areas with the highest poverty rates in red where 20-100% 
+of households are in poverty, and in the lightest shade are households in the lowest poverty rate
+areas, where less than 5% of households are under the federal poverty line. 
+
+A typical health disparities research question might be what is the ratio of
+premature mortality rates in the highest poverty areas to the lowest poverty
+areas. And here premature mortality is defined as death before the age of 65. 
+
+In the simplest method, we can sum up the numbers of premature deaths in the census
+tracts from each poverty level, the amount of person-time during which these observations
+could have occurred (i.e., the number of people who could have died multiplied by the duration of observation-time), and we could calculate rates of premature mortality per 100,000 person-years 
+as a crude rate. 
+
+But this wouldn't account for if there's a systematic difference in age between the poverty
+levels — it could happen that some of these poverty levels are younger or older than the rest, 
+potentially affecting what we'd see in the crude rates. 
+
+Instead, we use the Year 2000 Standard Million age distribution to re-weight the
+age specific rates in order to calculate age standardized rates. Again, this is like
+controlling for age and saying "what rate would we have observed if the age distribution 
+had been as in the Year 2000 Standard Million?"
+
+One we have our age-standardized rates, we can look at those and see that there's a roughly 
+2.15x rate ratio in premature mortality between the highest poverty areas and lowest
+poverty areas. 
+:::
+
+## Non-Spatial Regression 
+
+:::{style='font-size: 24px'}
+  - Modern epidemiologists and statisticians might be inclined to 
+  take a <span style='color: #eb4d4b'>**regression approach**</span> to estimation of inequities. 
+  - This permits statistical adjustment for multiple covariates (not just age)
+  - Typically we model age-specific disease rates using a log-linear
+  Poisson model as follows: 
+  $$Y_{ij} \sim \text{Poisson}(\mu_{ij})$$
+  $$\text{log}(\mu_{ij}) = \beta_0 + \beta_1 x_1 + ... + \beta_p x_p + \log(n_{ij})$$
+  where $Y_{ij}$ is the observed count in area $i$, covariate stratum $j$ and $n_{ij}$ is the population person-time that gave rise to the
+  observed count. 
+  - This yields $\hat \beta$ estimates that are interpretable as 
+  <span style='color: #eb4d4b'>**log incidence rate ratios**</span> 
+  (exponentiate to transform them back to the rate ratio scale).
+:::
+
+:::{.notes}
+The aggregate method does satisfy some needs, and we can perform age standardization with it, 
+but things would certainly get tricky if we wanted to incorporate multiple area based social metrics. 
+
+Instead, a more comprehensive framework is to use regression. 
+
+What's crucial in epidemiology when we're dealing with discrete health outcome events is that
+we use a count-based model.  
+
+We again have to be careful to specify the amount of person-time during which events
+can occur. 
+
+These will allow us to adjust for age, modeling rate ratios for each age strata.
+
+I just want to point out that Poisson regression models are a bit of an old stand-by, but there
+are others models that more flexibly allow for overdispersion, namely the Quasi-Poisson and Negative Binomial models, but I don't think I have time today to get into those. 
+
+This is a nice approach for understanding systematic variations and co-variations
+between area-based social metrics, risk factors, and health outcomes. 
+:::
+
+## Non-Spatial Regression
+
+<img src="images/02_methods/poisson2.png" style='position: absolute;'>
+
+:::{.notes}
+[walk through the slide]
+
+To interpret these results, besides needing to exponentiate them first, 
+I want to note that these are rate ratios in reference to the 
+reference level defined in each of the factor variables.
+
+So for example, we can interpret these results as telling us that
+there was a 2.18 times higher premature mortality rate in census tracts
+with 20-100% poverty rates as compared to the premature mortality 
+in census tracts with 0-5% poverty rates while also adjusting for age. 
+:::
+
+## {.center background-image="images/backgrounds/annie-spratt-2.jpg" background-color='white' background-opacity='30%'}
+
+<span style='color: black; font-size: 54px;'>
+> "Everything is related to everything else, but near things are more related than distant things." <br><br>—Tobler's First Law of Geography
+</span>
+
+## Small Area Estimation 
+
+:::{.columns}
+:::{.column}
+<img src="images/02_methods/CARIllustration.png">
+:::
+:::{.column style='font-size: 18px;'}
+Besag, York and Mollié (BYM) recommend combining a conditional-autoregressive (CAR) prior and a standard normal
+prior to allow for both: 
+
+  - spatially unstructured latent covariates, and 
+  - spatially correlated latent covariates 
+  $$O_i \sim \text{Poisson}(\theta_i E_i)$$
+  $$\text{log}(\theta_i) = \beta_0 + U_i + V_i$$
+  $$V_i \sim \text{Normal}(0, \sigma_V^2)$$
+  $$U_i | U_{j, j \neq i} \sim \text{Normal}(\mu_i, \sigma_U^2 / n_i)$$
+  where $\mu_i$ is the average among neighbor regions to region $i$ and
+  $n_i$ is the population size of regions neighboring region $i$. 
+:::
+:::
+
+:::{.notes}
+One of the sources of variation we haven't yet addressed is spatial autocorrelation, 
+or the tendencies of neighboring areas' outcomes to be correlated.
+
+There are many models that account for spatial autocorrelation including those
+proposed by Besag, York and Mollié, the Leroux model, and others — but the idea
+central to all of them is that we need to be explicit about modeling spatial
+structure and spatial interdependence in our data.
+
+Here, the BYM model is saying that the area level rates should be a function of
+the average of their neighboring area's rates, randomness, and other predictors.
+:::
+
+# When Rubber Meets the Road <br><span style='font-size: 28px;'>(alternatively: When the Solar Hits the Panel) </span> {background-image="images/backgrounds/american-public-power.jpg" background-color='black' background-opacity='40%'}
+
+## Spatial and Territorial Stigmatization
+
+:::{.columns}
+:::{.column}
+<img src="images/02_methods/redlining.webp">
+:::
+:::{.column style='font-size: 20px'}
+  - It is critical that we contextualize health inequities with 
+  analyses of social, political, and ecological context.
+  - Observations of health disparities do not necessarily translate to common understandings of cause. 
+  - Without offering explanatory context of resources and hazards, 
+  presentations of health disparities can perpetuate harmful ideas and
+  actions that undermine the elimination of health inequities; 
+  such presentations can create or reinforce <span style='color: #eb4d4b'>territorial stigmatization</span> where places are 
+  falsely associated with the moral character and behavior of its 
+  residents. 
+  - If some places are found to have a high concentration of illness or disease, narratives and representations of those places as “diseased,” “contaminated,” could produce or reinforce existing stigma and lead to counter-productive targeted interventions such as heightened policing and surveillance in an attempt to contain and control residents, reclamation or demolition of physical structures, and social neglect and abandonment.
+:::
+:::
+
+## Don't Reinforce Marginalization
+
+<img src="images/03_data_viz/problematic_color_palette.png" >
+
+<span style='font-size: 24px'>
+<center>
+↑ Don't do this
+</center>
+</span>
+
+## Be Colorblind Friendly
+
+<img src="images/03_data_viz/colorbrewer.png" style='position: absolute'>
+
+:::{.fragment}
+<img src="images/03_data_viz/coblis.png" style='position: absolute'>
+:::
+
+:::{.fragment}
+<img src="images/03_data_viz/cvd_grid.png" style='position: absolute'>
+:::
+
+# Outcomes {background-image="images/backgrounds/alex-mesmer.jpg" background-color='black' background-opacity='60%'}
+
+:::{.notes}
+Let's talk a bit about outcomes and what was built as part of our training.
+:::
+
+## Our Online Training Manual
+
+<a href='https://phdgp.github.io/PHDGP2.0/' target='_blank'>
+<img src="images/04_outcomes/training_manual.png" height='500px'>
+</a>
+
+Available online completely free and open-access at <https://phdgp.github.io/PHDGP2.0/>
+
+:::{.notes}
+Click onto the training manual and note the sections.
+:::
+
+## Tracks for Learning 
+
+One of our pedagogical insights was that our participants benefited from connecting to 
+particular modes of engagement with our content.
+
+:::{.columns}
+:::{.column width='33%'}
+<img src="images/04_outcomes/dataWrangling.png" width='250px'>
+:::
+:::{.column width='33%'}
+<img src="images/04_outcomes/interpretation.png" width='250px'>
+:::
+:::{.column width='33%'}
+<img src="images/04_outcomes/communication.png" width='250px'>
+:::
+:::
+
+These icons are used throughout the training manual to indicate summary points 
+important to each of these perspectives and helped us to frame our summary posters. 
+
+:::{.notes}
+These tracks allowed us to help relate to people of different backgrounds — we
+knew in advance that some people coming to our workshops would be in leadership
+positions who were looking to better understand existing research and how they
+could bolster their own teams' research, and then there would be others with
+more programmatic capacity who would be focused on the hands-on data analysis,
+the coding, and the technical details of the work.
+
+We strongly emphasized throughout that it's absolutely appropriate to pick your
+battles and to be honest about where the greatest bang-for-your-buck would be 
+in terms of effort spent and payoff. 
+:::
+
+## 
+
+<img src='images/04_outcomes/creatingABSMs.png' style='position: absolute;'>
+
+:::{.fragment}
+<img src='images/04_outcomes/summarizingABSMinequities.png' style='position: absolute;'>
+:::
+
+:::{.fragment}
+<img src='images/04_outcomes/multilevelAndSpatialModels.png' style='position: absolute;'>
+:::
+
+
+## Video Recordings 
+
+<span style='line-height: 0px; margin-bottom: 0px !important;'>
+<center>
+<iframe src="https://www.youtube.com/embed/FmLO4jNNxtY" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" width="45%" height="315" frameborder="0" style='margin-bottom: 5px;'></iframe>
+<iframe src="https://www.youtube.com/embed/O5867yqpLkw" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" width="45%" height="315" frameborder="0" style='margin-bottom: 5px;'></iframe><br>
+<iframe src="https://www.youtube.com/embed/Tm-8eD-UZJ4" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" width="45%" height="315" frameborder="0"></iframe>
+</center>
+</span>
+
+## A Research Framework 
+
+<center>
+<img src="images/04_outcomes/overview_schematic.png" height='600px'>
+</center>
+
+#
+
+<center>
+<img src="images/04_outcomes/conclusions.png" height='600px'>
+</center>
+
+:::{.notes}
+I want to conclude with this slide from Nancy Krieger. 
+
+As you will see, Social Justice and Public Health are twin pillars of ecosocial theory. 
+
+The point of analyzing how injustices such as structural racism or any other
+harm health is not to prove that they are wrong, since they are definitionally
+unjust, but rather to do correct science and to generate publicly testable and
+tested actionable knowledge about who is bearing the burden of exposure to
+disease, illness, and death.
+
+The point is not to do so-called politically correct science, but rather to do
+correct science that rigorously addresses the causal mechanisms, complex social
+pathways, and spatiotemporal realities of how health inequities are perpetuated
+and, conversely, how they can be ended.
+
+We hope that you will take advantage of the resources we have collated for you,
+and that you will continue asking the hard questions of who must do what, in
+collaboration with whom, in order to advance health justice given the new
+knowledge that can be generated using the methods presented here and otherwise.
+:::
+
+## Keep Connected
+
+:::{.columns}
+:::{.column }
+<center>
+<a href="https://www.hsph.harvard.edu/thegeocodingproject">
+<img src="images/04_outcomes/phdgp_website.png" height='350px'></a>
+
+<span style='font-size: 18px'>
+Find more resources on <br><https://www.hsph.harvard.edu/thegeocodingproject/>
+</span>
+
+<span style='font-size: 18px'>
+Check out the online training manual at <br><https://phdgp.github.io/PHDGP2.0/>
+</span>
+</center>
+:::
+:::{.column}
+<center>
+<a href="https://ctesta.com/">
+<img src="images/04_outcomes/portrait.jpeg" height='250px'></a>
+
+<span style='font-size: 18px'>
+Feel free to reach out and connect: <br>
+</span>
+
+<div style='font-size: 18px'>
+
+  - {{< fa solid earth-americas >}} <a href='https://ctesta.com'>ctesta.com</a> 
+  - {{< fa solid envelope >}} <span style='color: rgb(42, 118, 221)'>ctesta [at] hsph.harvard.edu</span>
+  - {{< fa brands github >}} <a href='https://github.com/ctesta01/'>github.com/ctesta01</a> 
+  - {{< fa brands mastodon >}} <a href='https://fediscience.org/@ctesta/'>fediscience.org/ctesta</a> 
+  - {{< fa brands unsplash >}} <a href='https://unsplash.com/@ctesta'>unsplash.com/ctesta</a> 
+</div>
+</center>
+:::
+:::
+
