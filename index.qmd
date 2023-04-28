@@ -360,6 +360,12 @@ made invisible.
 <img src="images/02_methods/ICE_plt_state.png">
 </center>
 
+## US Geographies to Choose From 
+
+<center>
+<img src="images/02_methods/censusgeochart.png" height='550px'>
+</center>
+
 ## The Modifiable Areal Unit Problem and Ecological Fallacy
 
 :::{.columns}
@@ -857,3 +863,4 @@ Feel free to reach out and connect: <br>
 :::
 :::
 
+# Questions? {background-image="images/backgrounds/artem-sapegin.jpg" background-color='black' background-opacity='60%'}
