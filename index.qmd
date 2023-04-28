@@ -249,14 +249,16 @@ locations that can then be easily linked to geographic areas.
 
 :::{.columns}
 :::{.column}
+<span style='font-size: 24px'>
 Area-Based Social Metrics (ABSMs) are quantitative measures that capture and
 represent the social, economic, and demographic characteristics of a specific
-geographic area or community.
+geographic area or community.<br><br></span>
 
+<span style='font-size: 24px'>
 On the right are some examples of ABSMs available from the CDC Social
 Vulnerability Index which is designed to help public health officials and local
 planners better prepare for and respond to emergency events like hurricanes,
-disease outbreaks, or exposure to dangerous chemicals. 
+disease outbreaks, or exposure to dangerous chemicals. </span>
 :::
 
 :::{.column}
@@ -635,7 +637,7 @@ in census tracts with 0-5% poverty rates while also adjusting for age.
 
 :::{.columns}
 :::{.column}
-<img src="images/02_methods/CARIllustration.png">
+<img src="images/02_methods/CARillustration.png">
 :::
 :::{.column style='font-size: 18px;'}
 Besag, York and Mollié (BYM) recommend combining a conditional-autoregressive (CAR) prior and a standard normal
